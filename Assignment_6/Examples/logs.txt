@@ -1,0 +1,24 @@
+Created user Franz Kafka at 2023-11-10 17:48:03.714584
+Created user H. P. Lovecraft at 2023-11-10 17:48:03.715594
+Created user William Golding at 2023-11-10 17:48:03.715594
+Created user George Orwell at 2023-11-10 17:48:03.716981
+Attempted login for user Franz Kafka at 2023-11-10 17:48:03.716981
+Login failed for user Franz Kafka at 2023-11-10 17:48:03.728011
+Attempted login for user Franz Kafka at 2023-11-10 17:48:03.728011
+Login successful for user Franz Kafka at 2023-11-10 17:48:03.729019
+Attempted login for user H. P. Lovecraft at 2023-11-10 17:48:03.729019
+Login successful for user H. P. Lovecraft at 2023-11-10 17:48:03.768669
+Attempted login for user William Golding at 2023-11-10 17:48:03.769626
+Login successful for user William Golding at 2023-11-10 17:48:03.793667
+Attempted password change for user William Golding at 2023-11-10 17:48:03.794667
+Password change successful for user William Golding at 2023-11-10 17:48:03.794667
+Attempted login for user George Orwell at 2023-11-10 17:48:03.795666
+Login failed for user George Orwell at 2023-11-10 17:48:03.808502
+Attempted login for user George Orwell at 2023-11-10 17:48:03.809244
+Login successful for user George Orwell at 2023-11-10 17:48:03.809508
+Attempted password change for user George Orwell at 2023-11-10 17:48:03.809508
+Password change failed for user George Orwell at 2023-11-10 17:48:03.810498
+Attempted password change for user George Orwell at 2023-11-10 17:48:03.810498
+Password change successful for user George Orwell at 2023-11-10 17:48:03.811501
+Attempted login for non-existing user George Orwel at 2023-11-10 17:48:03.811501
+Attempted creation of existing user George Orwell at 2023-11-10 17:48:03.811501
