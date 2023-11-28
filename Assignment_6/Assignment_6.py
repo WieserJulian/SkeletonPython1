@@ -91,14 +91,14 @@ Number of digits: 3190\n"""
             ]
             os.remove("merged.csv")
             merge_csv_files(*paths)
-            with open("merged.csv", "r") as merged:
+            with open("merged_all.csv", "r") as merged:
                 with open(os.path.join(self.filepath, "merged_all.csv"), "r") as all:
                     # all has a empty line to much
                     for a, m in zip(all.readlines()[0:-1], merged.readlines()):
                         self.assertEqual(a, m)
 
             merge_csv_files(*paths, only_shared_columns=True)
-            with open("merged.csv", "r") as merged:
+            with open("merged_shared.csv", "r") as merged:
                 with open(os.path.join(self.filepath, "merged_shared.csv"), "r") as shared:
                     for a, m in zip(shared.readlines()[0:-1], merged.readlines()):
                         self.assertEqual(a, m)
