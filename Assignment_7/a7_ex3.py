@@ -1,6 +1,6 @@
 class Distance:
     def __init__(self, x):
-        self.x = x
+        pass
 
     def to_string(self) -> str:
         pass

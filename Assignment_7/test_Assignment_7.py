@@ -18,13 +18,14 @@ class test_Assignment_7(unittest.TestCase):
         try:
             from a7_ex1 import Radian
             c = Radian(90)
+            c.degree
             self.assertAlmostEqual(1.57, c.rad(), places=2)
             solve_text = "The degree is 90.00 and the radian is 1.57\n"
             with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as stdout:
                 c.print()
             self.assertEqual(solve_text, stdout.getvalue())
 
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex1.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
@@ -37,6 +38,7 @@ class test_Assignment_7(unittest.TestCase):
             # Rotate 90deg
             matrix1 = deepcopy(matrix)
             c1 = Rotate(matrix1, 90)
+            c1.degree
             c11 = c1.rotation()
             self.assertEqual(rotate90, c11)
             self.assertEqual(matrix, matrix1)
@@ -85,7 +87,7 @@ class test_Assignment_7(unittest.TestCase):
             self.assertIsNone(c66)
             self.assertEqual(rotate180, matrix1)
             pass
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex2.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
@@ -94,10 +96,11 @@ class test_Assignment_7(unittest.TestCase):
         try:
             from a7_ex3 import Distance
             x = Distance(10)
+            x.x
             self.assertEqual("Distance: the number of vectors =10", x.to_string())
             with self.assertRaises(NotImplementedError):
                 x.dist()
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex3.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
@@ -108,11 +111,12 @@ class test_Assignment_7(unittest.TestCase):
             vect1 = [1, 2, 3]
             vect2 = [4, 5, 6]
             k = Minkowski(2, vect1, vect2)
+            k.x
             self.assertEqual("Minkowski: the number of vectors =2, vector_1=[1, 2, 3], vector_2=[4, 5, 6]",
                              k.to_string())
             self.assertEqual(5.1962, k.dist())
 
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex4.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
@@ -123,11 +127,12 @@ class test_Assignment_7(unittest.TestCase):
             vect1 = [1, 2, 3]
             vect2 = [4, 5, 6]
             m = Manhattan(2, vect1, vect2)
+            m.x
             self.assertEqual("Manhattan: the number of vectors =2, vector_1=[1, 2, 3], vector_2=[4, 5, 6]",
                              m.to_string())
             self.assertEqual(9.0, m.dist())
 
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex5.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
@@ -138,9 +143,10 @@ class test_Assignment_7(unittest.TestCase):
             vect1 = [1, 2, 3]
             vect2 = [4, 5, 6]
             e = Euclidean(2, vect1, vect2)
+            e.x
             self.assertEqual("Euclidean: the number of vectors =2, vector_1=[1, 2, 3], vector_2=[4, 5, 6]", e.to_string())
             self.assertEqual(5.1962, e.dist())
-        except Exception as er:
+        except (AttributeError, ImportError, ModuleNotFoundError) as er:
             warnings.warn("You need to put the a7_ex6.py in the same directory",ImportWarning, source=er)
             self.skipTest("Possible not implemented")
 
