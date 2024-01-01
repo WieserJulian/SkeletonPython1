@@ -2,13 +2,13 @@
 #    * Copyright (c) 2023 Julian Wieser From 2023.12.06 to Present.
 #    * All rights are reserved
 #  ==================================================
+import io
+import os
 import subprocess
 import sys
 import unittest
 import unittest.mock
-import os
 import warnings
-import io
 from imp import reload
 
 
@@ -35,7 +35,8 @@ class Assignment_9(unittest.TestCase):
                      "\d{ab12.c}: []\n" \
                      "d[^ ]+: ['d23g780nb', 'deed', 'de', 'ddd32']\n"
         with unittest.mock.patch('builtins.input',
-                                 side_effect=["a9_ex1_data.txt", "utf-8", "(d..d)", "\\d{3}", "\\d{ab12.c}", "d[^ ]+", ""]):
+                                 side_effect=["a9_ex1_data.txt", "utf-8", "(d..d)", "\\d{3}", "\\d{ab12.c}", "d[^ ]+",
+                                              ""]):
             with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as stdout:
                 reload(__import__("a9_ex1"))
             self.assertEqual(solve_text, stdout.getvalue())
@@ -48,7 +49,7 @@ class Assignment_9(unittest.TestCase):
     def test_a9_ex2(self):
         try:
             from a9_ex2 import extract_emails
-            if extract_emails(""):
+            if extract_emails("") is None:
                 raise Exception
         except Exception as er:
             warnings.warn("You need to put the a9_ex2.py in the same directory", ImportWarning, source=er)
@@ -56,13 +57,13 @@ class Assignment_9(unittest.TestCase):
 
         from a9_ex2 import extract_emails
         t = """
-        Here are some email addresses:
-        john.doe@example.com, alice_smith123@gmail.com, ABC+@a-b-c.aBc,
-        contact@company.org, and info@sub.domain.co.uk.
-        Some invalid email addresses are:
-        john@, @example.com, user@domain, us/er@email.com,
-        invalid@domain.f and invalid.email@invalid@domain.com.
-        """
+Here are some email addresses:
+john.doe@example.com, alice_smith123@gmail.com, ABC+@a-b-c.aBc,
+contact@company.org, and info@sub.domain.co.uk.
+Some invalid email addresses are:
+john@, @example.com, user@domain, us/er@email.com,
+invalid@domain.f and invalid.email@invalid@domain.com.
+"""
         self.assertEqual(['john.doe@example.com', 'alice_smith123@gmail.com', 'ABC+@a-b-c.aBc',
                           'contact@company.org', 'info@sub.domain.co.uk'], extract_emails(t))
 
@@ -75,12 +76,9 @@ class Assignment_9(unittest.TestCase):
             warnings.warn("You need to put the a9_ex3.py in the same directory", ImportWarning, source=er)
             self.skipTest("Possible not implemented")
         result = subprocess.run([sys.executable, "a9_ex3.py", "-n 10", "-p 2"], capture_output=True)
-        self.assertAlmostEqual(0.626383161, float(
-            result.stdout.decode().split("Euler-Mascheroni constant approximation (10 terms):")[1]), delta=9)
+        self.assertEqual("Euler-Mascheroni constant approximation (10 terms): 0.626383161", result.stdout.decode().strip())
         result = subprocess.run([sys.executable, "a9_ex3.py", "-n 1_000_000_000", "-p 4"], capture_output=True)
-        self.assertAlmostEqual(0.577215665, float(
-            result.stdout.decode().split("Euler-Mascheroni constant approximation (1000000000 terms):")[1]), delta=9)
-        pass
+        self.assertEqual("Euler-Mascheroni constant approximation (1000000000 terms): 0.577215665", result.stdout.decode().strip())
 
     def test_a9_ex4(self):
         try:
@@ -121,7 +119,7 @@ class Assignment_9(unittest.TestCase):
                      "The 'python' produced the following error output:\n" \
                      "usage: a9_ex3.py [-h] [-p PROCESSES] [-n N]\n" \
                      "a9_ex3.py: error: unrecognized arguments: -x 9\n"
-        result = subprocess.run([sys.executable, "a9_ex4.py", "-p", "python", "-a", "a9_ex3.py","-x 9"],
+        result = subprocess.run([sys.executable, "a9_ex4.py", "-p", "python", "-a", "a9_ex3.py", "-x 9"],
                                 capture_output=True,
                                 encoding="utf-8")
         self.assertEqual(solve_text, result.stdout.replace("\r", ""))
