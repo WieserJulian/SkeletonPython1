@@ -57,7 +57,9 @@ class Assignment_10(unittest.TestCase):
         from a10_ex2 import elements_wise
         try:
             x = np.array([1, 2, 3])
-            elements_wise(x, lambda x: x + 1)
+            def func(x):
+                return x + 1
+            elements_wise(x, func)
             if np.array_equal(x, np.array([1, 2, 3])):
                 raise AttributeError
             pass
@@ -68,8 +70,13 @@ class Assignment_10(unittest.TestCase):
         def func(x):
             return x * x + 3 * x + 2
 
-        s1 = np.array(range(2 * 2 * 3), dtype=float).reshape(2, 2, -1)
-        s2 = np.array(range(2 * 3), dtype=float).reshape(2, -1)
+        s1 = np.array([[[2., 6., 12.],
+                        [20., 30., 42.]],
+                       [[56., 72., 90.],
+                        [110., 132., 156.]]]
+                      )
+        s2 = np.array([[2., 6., 12.],
+                       [20., 30., 42.]])
         a1 = np.array(range(2 * 2 * 3), dtype=float).reshape(2, 2, -1)
         a2 = np.array(range(2 * 3), dtype=float).reshape(2, -1)
         elements_wise(a1, func)
